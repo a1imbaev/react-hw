@@ -1,14 +1,22 @@
-import "./index.css";
+import React from 'react';
+import './index.css';
 
-export function ProductCard(props) {
-    const { image, category, title, price } = props.data; 
+const ProductCard = ({ data }) => {
+  const { image, title, price, category } = data;
 
-    return(
-        <div className="product-card">
-            <img width={200} src={image} alt="" />
-            <div>{category}</div>
-            <h4>{title}</h4>
-            <div>${price}</div>
+  return (
+    <div className="product-card">
+      <img src={image} alt={title} className="product-image" />
+      <div className="product-info">
+        <div className="product-category">{category}</div>
+        <h3 className="product-title">{title}</h3>
+        <div className="product-footer">
+          <div className="product-price">${price.toFixed(2)}</div>
+          <button className="add-to-cart">Add to cart</button>
         </div>
-    );
-}
+      </div>
+    </div>
+  );
+};
+
+export default ProductCard;
